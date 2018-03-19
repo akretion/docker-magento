@@ -19,7 +19,7 @@ if [[ -e /firstrun/ok ]]; then
 
 else
 
-  mv /var_www_backup/* /var/www
+  cp -r /var_www_backup/* /var/www
 
   echo "setting the default installer info for magento"
   sed -i "s/<host>localhost/<host>db/g" /var/www/app/etc/config.xml
@@ -44,8 +44,8 @@ else
   cp -R /tmp/magento-sample-data-1.9.1.0/skin/* /var/www/skin/
 
   echo "Moving Magento Connector module"
-  mv /tmp/module-magento-trunk/Openlabs_OpenERPConnector-1.1.0/app/etc/modules/Openlabs_OpenERPConnector.xml /var/www/app/etc/modules/
-  mv /tmp/module-magento-trunk/Openlabs_OpenERPConnector-1.1.0/Openlabs /var/www/app/code/community/
+  cp /tmp/module-magento-trunk/Openlabs_OpenERPConnector-1.1.0/app/etc/modules/Openlabs_OpenERPConnector.xml /var/www/app/etc/modules/
+  cp -R /tmp/module-magento-trunk/Openlabs_OpenERPConnector-1.1.0/Openlabs /var/www/app/code/community/
   rm -rf /tmp/module-magento-trunk
 
 
